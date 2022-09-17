@@ -50,42 +50,56 @@ export default function Login({ navigation }) {
             source={bg}
             style={styles.imageContainer}
           >
-            <View style={{}}>
-              <CInput
-                onFocus={onFocus}
-                onBlur={onBlur}
-                placeholder='enter user name'
-                icon={
-                  <Ionicons
-                    name='at-circle'
-                    size={25}
-                    color={colors.primary.light}
-                  />
-                }
-              />
-              <CInput
-                onFocus={onFocus}
-                onBlur={onBlur}
-                placeholder='enter password'
-                password
-                icon={
-                  <Ionicons
-                    name='at-circle'
-                    size={25}
-                    color={colors.primary.light}
-                  />
-                }
-              />
-              <Button
-                style={{ marginTop: hp(2) }}
-                loading={false}
-                icon='account-arrow-right'
-                mode='contained'
-                buttonColor={colors.primary.light}
-              >
-                ENTER
-              </Button>
+            <CInput
+              onFocus={onFocus}
+              onBlur={onBlur}
+              placeholder='enter user name'
+              icon={
+                <Ionicons
+                  name='person'
+                  size={25}
+                  color={colors.primary.light}
+                />
+              }
+            />
+            <CInput
+              onFocus={onFocus}
+              onBlur={onBlur}
+              placeholder='enter password'
+              password
+              icon={
+                <Ionicons
+                  name='lock-closed'
+                  size={25}
+                  color={colors.primary.light}
+                />
+              }
+            />
+            <Button
+              onPress={() => alert('on press')}
+              style={{ marginTop: hp(2) }}
+              loading={false}
+              icon='account-arrow-right'
+              mode='contained'
+              buttonColor={colors.primary.light}
+            >
+              ENTER
+            </Button>
+            <View style={styles.or}>
+              <View style={styles.line}></View>
+              <Text style={styles.textOr}>OR</Text>
+              <View style={styles.line}></View>
             </View>
+            <Button
+              onPress={() => navigation.navigate('Signup')}
+              loading={false}
+              icon='account-arrow-right'
+              mode='contained'
+              textColor={colors.primary.light}
+              buttonColor={'white'}
+            >
+              SIGN UP
+            </Button>
           </ImageBackground>
         </View>
       </TouchableWithoutFeedback>
@@ -102,7 +116,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 50,
     borderTopLeftRadius: 50,
     overflow: 'hidden',
-    padding: 40
+    padding: wp(10)
   },
   text: {
     fontSize: wp(15),
@@ -112,5 +126,22 @@ const styles = StyleSheet.create({
     position: 'relative',
     color: 'white',
     textAlign: 'center'
+  },
+  or: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginVertical: hp(2)
+  },
+  line: {
+    borderBottomWidth: 2,
+    width: wp(30),
+    borderColor: 'white'
+  },
+  textOr: {
+    fontWeight: 'bold',
+    color: 'white',
+    fontSize: wp(6),
+    paddingHorizontal: wp(4)
   }
 })

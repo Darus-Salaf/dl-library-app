@@ -23,7 +23,8 @@ export default function CInput({
   color = 'white',
   border = 'lightgray',
   onFocus,
-  onBlur
+  onBlur,
+  editable
 }) {
   const [borderStyle, setBorderStyle] = useState({
     color: border,
@@ -52,6 +53,7 @@ export default function CInput({
       >
         {icon}
         <TextInput
+          editable={editable}
           onFocus={focusHandler}
           onBlur={blurHandler}
           selectionColor={selectionColor || colors.primary.light}
