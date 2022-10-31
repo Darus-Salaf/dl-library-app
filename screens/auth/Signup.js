@@ -9,18 +9,18 @@ import {
   TouchableWithoutFeedback,
   View
 } from 'react-native'
-import bg from '../assets/images/bg.jpg'
+import bg from '../../assets/images/bg.jpg'
 import Ionicons from '@expo/vector-icons/Ionicons'
 import { MaterialIcons } from '@expo/vector-icons'
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
 } from 'react-native-responsive-screen'
-import colors from '../static/colors'
-import CInput from '../components/customs/CInput'
+import colors from '../../static/colors'
+import CInput from '../../components/customs/CInput'
 import { Button, Divider, Modal, Portal } from 'react-native-paper'
 import { useState } from 'react'
-import flex from '../styles/flex'
+import flex from '../../styles/flex'
 
 export default function Signup({ navigation }) {
   const [visible, setVisible] = useState(false)
@@ -48,6 +48,7 @@ export default function Signup({ navigation }) {
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={{ marginBottom: hp(marginBottom) }}>
             <CInput
+              placeholderTextColor='white'
               onFocus={onFocus}
               onBlur={onBlur}
               placeholder='your name'
@@ -60,6 +61,7 @@ export default function Signup({ navigation }) {
               }
             />
             <CInput
+              placeholderTextColor='white'
               onFocus={onFocus}
               onBlur={onBlur}
               placeholder='your email'
@@ -68,6 +70,7 @@ export default function Signup({ navigation }) {
               }
             />
             <CInput
+              placeholderTextColor='white'
               onFocus={onFocus}
               onBlur={onBlur}
               placeholder='phone no.'
@@ -80,6 +83,7 @@ export default function Signup({ navigation }) {
               }
             />
             <CInput
+              placeholderTextColor='white'
               onFocus={onFocus}
               onBlur={onBlur}
               placeholder='alternative phone no.'
@@ -92,6 +96,7 @@ export default function Signup({ navigation }) {
               }
             />
             <CInput
+              placeholderTextColor='white'
               onFocus={onFocus}
               onBlur={onBlur}
               placeholder='address'
@@ -162,6 +167,7 @@ export default function Signup({ navigation }) {
               </Modal>
             </Portal>
             <CInput
+              placeholderTextColor='white'
               onFocus={onFocus}
               onBlur={onBlur}
               placeholder='username'
@@ -174,6 +180,7 @@ export default function Signup({ navigation }) {
               }
             />
             <CInput
+              placeholderTextColor='white'
               onFocus={onFocus}
               onBlur={onBlur}
               placeholder='password'

@@ -6,19 +6,24 @@ import {
   Keyboard
 } from 'react-native'
 import { StyleSheet, Text, View } from 'react-native'
-import colors from '../static/colors'
-import bg from '../assets/images/bg.jpg'
+import colors from '../../static/colors'
+import bg from '../../assets/images/bg.jpg'
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
 } from 'react-native-responsive-screen'
 import * as NavigationBar from 'expo-navigation-bar'
-
 import { useEffect, useState } from 'react'
 import { Button } from 'react-native-paper'
-import CInput from '../components/customs/CInput'
+import CInput from '../../components/customs/CInput'
+import { storeData } from '../../lib/async-storage'
+import { useAppContext } from '../../utils/context'
+import Alerts from '../../lib/Alerts'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export default function Login({ navigation }) {
+  const [isMod, setIsMod] = useState(false)
+  const [isAuth, setIsAuth] = useAppContext()
   const [height, setHeight] = useState({ height: 35, top: 15 })
   useEffect(() => {
     NavigationBar.setBackgroundColorAsync('orangered')
@@ -26,6 +31,19 @@ export default function Login({ navigation }) {
   }, [])
   const onFocus = () => setHeight({ height: 20, top: 8 })
   const onBlur = () => setHeight({ height: 35, top: 15 })
+
+  const getData = async key => {
+    try {
+      const value = await AsyncStorage.getItem(key)
+      console.log('value', value)
+    } catch (e) {
+      return Alerts(
+        'Error on storing data',
+        'There is an error while storing data on storange. Please try again'
+      )
+    }
+  }
+  getData('token')
 
   return (
     <ImageBackground source={bg} style={styles.container}>
@@ -42,7 +60,7 @@ export default function Login({ navigation }) {
                 { height: hp(height.height), top: hp(height.top) }
               ]}
             >
-              DI Library
+              {isMod ? 'Login Moderator' : 'DI Library'}
             </Text>
           </View>
           <ImageBackground
@@ -76,7 +94,10 @@ export default function Login({ navigation }) {
               }
             />
             <Button
-              onPress={() => alert('on press')}
+              onPress={() => {
+                storeData('token', 'this is token')
+                console.log('store done')
+              }}
               style={{ marginTop: hp(2) }}
               loading={false}
               icon='account-arrow-right'
@@ -91,15 +112,43 @@ export default function Login({ navigation }) {
               <View style={styles.line}></View>
             </View>
             <Button
-              onPress={() => navigation.navigate('Signup')}
+              onPress={() => {
+                if (isMod) {
+                  alert('moderator form view')
+                } else navigation.navigate('Signup')
+              }}
               loading={false}
               icon='account-arrow-right'
               mode='contained'
               textColor={colors.primary.light}
               buttonColor={'white'}
+              style={{ marginBottom: hp(2) }}
             >
               SIGN UP
             </Button>
+            {isMod ? (
+              <Button
+                onPress={() => setIsMod(false)}
+                loading={false}
+                icon='account-arrow-right'
+                mode='contained'
+                textColor={colors.primary.light}
+                buttonColor={'white'}
+              >
+                I'M USER
+              </Button>
+            ) : (
+              <Button
+                onPress={() => setIsMod(true)}
+                loading={false}
+                icon='account-arrow-right'
+                mode='contained'
+                textColor={colors.primary.light}
+                buttonColor={'white'}
+              >
+                I'M MODERATOR
+              </Button>
+            )}
           </ImageBackground>
         </View>
       </TouchableWithoutFeedback>

@@ -1,14 +1,11 @@
-import { TouchableOpacity, Text } from 'react-native'
-import Login from '../screens/Login'
-import { AntDesign } from '@expo/vector-icons'
-import Signup from '../screens/Signup'
-import {
-  heightPercentageToDP as hp,
-  widthPercentageToDP as wp
-} from 'react-native-responsive-screen'
+import { Ionicons } from '@expo/vector-icons'
+import Login from '../screens/auth/Login'
+import Signup from '../screens/auth/Signup'
 import Table from '../screens/Table'
+import HomeTabs from '../screens/user/HomeTabs'
+import BooksDetails from '../screens/common/BooksDetails'
 
-const navigations = [
+export const authNavigations = [
   {
     id: 1,
     component: Login,
@@ -26,6 +23,25 @@ const navigations = [
     options: {
       headerShown: false
     }
+  }
+]
+export const protectNavigations = [
+  {
+    id: 1,
+    component: HomeTabs,
+    name: 'UserHome',
+    type: 'Stack',
+    options: {
+      headerShown: false,
+      headerLeft: null
+    }
+  },
+  {
+    id: 2,
+    component: BooksDetails,
+    name: 'BooksDetails',
+    type: 'Stack',
+    options: {}
   },
   {
     id: 3,
@@ -37,5 +53,3 @@ const navigations = [
     }
   }
 ]
-
-export default navigations

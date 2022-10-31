@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "di-library-project",
-    "owner": "rabius-sunny",
-    "slug": "di-library-project",
+    "name": "DI Library",
+    "owner": "darul_islam",
+    "slug": "darul-islam-library",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -10,7 +10,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#FF4500"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -22,8 +22,16 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#FF4500"
       }
+    },
+    "androidStatusBar": {
+      "barStyle": "light-content",
+      "backgroundColor": "#FF4500"
+    },
+    "androidNavigationBar": {
+      "barStyle": "light-content",
+      "backgroundColor": "#FF4500"
     },
     "web": {
       "favicon": "./assets/favicon.png"
